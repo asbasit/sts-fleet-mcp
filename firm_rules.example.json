@@ -1,0 +1,73 @@
+{
+  "_readme": "Copy to firm_rules.json (kept out of git). Every account is a TEST account unless listed under 'accounts' as challenge, funded or live. Firm figures are examples; confirm them against each account's terms.",
+  "internal_buffer": {
+    "daily_loss_pct": 4.0,
+    "max_loss_pct": 9.0
+  },
+  "warn_margin_pct": 1.0,
+  "stale_after_sec": 300,
+  "firms": {
+    "FTMO": {
+      "daily_loss_pct": 5.0,
+      "max_loss_pct": 10.0,
+      "daily_basis": "day_start_balance",
+      "max_basis": "static",
+      "verified": false,
+      "notes": "Standard 2-step challenge figures. Daily reset follows FTMO's day boundary (midnight CE(S)T); the EA uses the broker-server day, which normally lines up. Confirm against your account dashboard."
+    },
+    "FTUK": {
+      "daily_loss_pct": null,
+      "max_loss_pct": null,
+      "daily_basis": "day_start_balance",
+      "max_basis": "static",
+      "verified": false,
+      "notes": "Fill from the program you bought; FTUK rules vary by program."
+    },
+    "BlueGuardian": {
+      "daily_loss_pct": null,
+      "max_loss_pct": null,
+      "daily_basis": "day_start_max",
+      "max_basis": "trailing",
+      "verified": false,
+      "notes": "Instant funding account. Fill from its terms; check whether max loss trails equity or balance."
+    },
+    "PTB": {
+      "daily_loss_pct": null,
+      "max_loss_pct": null,
+      "daily_basis": "day_start_balance",
+      "max_basis": "static",
+      "verified": false,
+      "notes": "TradeLocker accounts won't run the MT5 heartbeat; listed for completeness."
+    },
+    "LiteFinance": {
+      "daily_loss_pct": null,
+      "max_loss_pct": null,
+      "daily_basis": "day_start_balance",
+      "max_basis": "static",
+      "verified": true,
+      "notes": "Broker account, no firm limits. Internal buffer only."
+    }
+  },
+  "accounts": {
+    "_example_100001": {
+      "type": "challenge",
+      "firm": "FTMO",
+      "phase": "1",
+      "initial_balance": 100000,
+      "label": "Example 100k challenge"
+    },
+    "_example_100002": {
+      "type": "live",
+      "cent": true,
+      "initial_balance": 5000,
+      "deposit": 100000,
+      "buffer_daily_pct": 10,
+      "buffer_overall_pct": 40,
+      "label": "Example cent recovery account"
+    },
+    "_example_100003": {
+      "type": "test",
+      "label": "Example EA trial - hands off"
+    }
+  }
+}
