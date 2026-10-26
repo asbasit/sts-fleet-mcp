@@ -1,0 +1,7 @@
+firm_rules.json
+fleet/
+sample_fleet/
+__pycache__/
+*.pyc
+*.ex4
+*.ex5
